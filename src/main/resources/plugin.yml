@@ -1,0 +1,4 @@
+name: Superheros
+version: ${project.version}
+main: net.dohaw.superheros.SuperherosPlugin
+api-version: 1.17
