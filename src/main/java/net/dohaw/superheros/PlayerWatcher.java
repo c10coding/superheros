@@ -39,7 +39,7 @@ public class PlayerWatcher implements Listener {
             if(Spell.isSpellItem(item)){
                 SpellType spellType = Spell.getItemSpellType(item);
                 SuperheroType playerSuperhero = plugin.getPlayerSuperHeros().get(player.getUniqueId());
-                if(playerSuperhero != null){
+                if(playerSuperhero != null && !isOnCooldown(player, spellType)){
                     Spell.castItemSpell(player, playerSuperhero, spellType);
                     putSpellOnCooldown(player, spellType);
                 }
@@ -67,6 +67,11 @@ public class PlayerWatcher implements Listener {
             currentSpellsOnCD.remove(spellType);
             caster.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(StringUtils.colorString("&b" + spellType.name() + " is not on cooldown anymore!")));
         }, 30 * 20L);
+    }
+
+    private boolean isOnCooldown(Player player, SpellType spellType){
+        if(!spellsOnCooldown.containsKey(player.getUniqueId())) return false;
+        return spellsOnCooldown.get(player.getUniqueId()).contains(spellType);
     }
 
 }
