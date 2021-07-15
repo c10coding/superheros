@@ -7,15 +7,14 @@ import net.dohaw.superheros.superhero.spell.SpellType;
 import java.util.Arrays;
 import java.util.List;
 
-public class Thanos extends SuperheroWrapper {
+public class Flash extends SuperheroWrapper {
 
-    public Thanos() {
-        super(SuperheroType.THANOS);
+    public Flash() {
+        super(SuperheroType.FLASH);
     }
 
     @Override
     protected List<SpellType> compileSpells() {
-        return Arrays.asList(SpellType.FREEZE, SpellType.LEVITATE);
+        return Arrays.asList(SpellType.SPEED_BOOST, SpellType.TELEPORT);
     }
-
 }

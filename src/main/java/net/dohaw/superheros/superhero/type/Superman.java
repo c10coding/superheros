@@ -4,18 +4,19 @@ import net.dohaw.superheros.superhero.SuperheroType;
 import net.dohaw.superheros.superhero.SuperheroWrapper;
 import net.dohaw.superheros.superhero.spell.SpellType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
-public class Thanos extends SuperheroWrapper {
+public class Superman extends SuperheroWrapper {
 
-    public Thanos() {
-        super(SuperheroType.THANOS);
+    public Superman() {
+        super(SuperheroType.SUPERMAN);
     }
 
     @Override
     protected List<SpellType> compileSpells() {
-        return Arrays.asList(SpellType.FREEZE, SpellType.LEVITATE);
+        return Arrays.asList(SpellType.FLY, SpellType.SEE_THROUGH);
     }
-
 }

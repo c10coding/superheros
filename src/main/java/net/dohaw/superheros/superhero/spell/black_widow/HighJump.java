@@ -1,4 +1,4 @@
-package net.dohaw.superheros.superhero.spell.thanos;
+package net.dohaw.superheros.superhero.spell.black_widow;
 
 import net.dohaw.superheros.SuperherosPlugin;
 import net.dohaw.superheros.superhero.SuperheroType;
@@ -15,33 +15,33 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Arrays;
 import java.util.List;
 
-public class Levitate extends SpellWrapper {
+public class HighJump extends SpellWrapper {
 
-    public Levitate() {
-        super(SpellType.LEVITATE, SuperheroType.THANOS);
+    public HighJump() {
+        super(SpellType.HIGH_JUMP, SuperheroType.BLACK_WIDOW);
     }
 
     @Override
     public boolean cast(Player caster, SuperherosPlugin plugin) {
-        caster.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 5 * 20, 0));
-        Spell.playSound(caster, Sound.ENTITY_CHICKEN_AMBIENT);
-        Spell.spawnParticle(caster, Particle.END_ROD, 10, 1, 1, 1);
+        caster.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 20 * 10, 0));
+        Spell.playSound(caster, Sound.ENTITY_SLIME_JUMP);
+        Spell.spawnParticle(caster, Particle.SQUID_INK, 30, 0.5f, 0.5f, 0.5f);
         return true;
     }
 
     @Override
     public Material getItemMaterial() {
-        return Material.FEATHER;
+        return Material.SLIME_BALL;
     }
 
     @Override
     public String getItemDisplayName() {
-        return "&eLevitate";
+        return "&eHigh Jump";
     }
 
     @Override
     public List<String> getItemLore() {
-        return Arrays.asList("&7Levitates you for 5 seconds");
+        return Arrays.asList("&7Allow you to jump higher than normal for 10 seconds");
     }
 
 }

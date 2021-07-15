@@ -7,15 +7,15 @@ import net.dohaw.superheros.superhero.spell.SpellType;
 import java.util.Arrays;
 import java.util.List;
 
-public class Thanos extends SuperheroWrapper {
+public class Batman extends SuperheroWrapper {
 
-    public Thanos() {
-        super(SuperheroType.THANOS);
+    public Batman() {
+        super(SuperheroType.BATMAN);
     }
 
     @Override
     protected List<SpellType> compileSpells() {
-        return Arrays.asList(SpellType.FREEZE, SpellType.LEVITATE);
+        return Arrays.asList(SpellType.GRAPPLING_HOOK, SpellType.BLINDNESS);
     }
 
 }

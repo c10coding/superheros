@@ -1,47 +1,47 @@
-package net.dohaw.superheros.superhero.spell.thanos;
+package net.dohaw.superheros.superhero.spell.loki;
 
 import net.dohaw.superheros.SuperherosPlugin;
 import net.dohaw.superheros.superhero.SuperheroType;
 import net.dohaw.superheros.superhero.spell.Spell;
 import net.dohaw.superheros.superhero.spell.SpellType;
 import net.dohaw.superheros.superhero.spell.SpellWrapper;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.world.entity.Entity;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Levitate extends SpellWrapper {
+public class Shadow extends SpellWrapper {
 
-    public Levitate() {
-        super(SpellType.LEVITATE, SuperheroType.THANOS);
+    public Shadow() {
+        super(SpellType.SHADOW, SuperheroType.LOKI);
     }
 
     @Override
     public boolean cast(Player caster, SuperherosPlugin plugin) {
-        caster.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 5 * 20, 0));
-        Spell.playSound(caster, Sound.ENTITY_CHICKEN_AMBIENT);
-        Spell.spawnParticle(caster, Particle.END_ROD, 10, 1, 1, 1);
+        EntityPlayer npc = Spell.createNPC(caster);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            npc.setRemoved(Entity.RemovalReason.a);
+        }, 20L * 5);
         return true;
     }
 
     @Override
     public Material getItemMaterial() {
-        return Material.FEATHER;
+        return Material.PLAYER_HEAD;
     }
 
     @Override
     public String getItemDisplayName() {
-        return "&eLevitate";
+        return "&eShadow";
     }
 
     @Override
     public List<String> getItemLore() {
-        return Arrays.asList("&7Levitates you for 5 seconds");
+        return Arrays.asList("&7Creates a shadow of yourself");
     }
 
 }

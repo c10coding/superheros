@@ -1,47 +1,49 @@
-package net.dohaw.superheros.superhero.spell.thanos;
+package net.dohaw.superheros.superhero.spell.superman;
 
 import net.dohaw.superheros.SuperherosPlugin;
 import net.dohaw.superheros.superhero.SuperheroType;
 import net.dohaw.superheros.superhero.spell.Spell;
 import net.dohaw.superheros.superhero.spell.SpellType;
 import net.dohaw.superheros.superhero.spell.SpellWrapper;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Levitate extends SpellWrapper {
+public class Fly extends SpellWrapper {
 
-    public Levitate() {
-        super(SpellType.LEVITATE, SuperheroType.THANOS);
+    public Fly() {
+        super(SpellType.FLY, SuperheroType.SUPERMAN);
     }
 
     @Override
     public boolean cast(Player caster, SuperherosPlugin plugin) {
-        caster.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 5 * 20, 0));
-        Spell.playSound(caster, Sound.ENTITY_CHICKEN_AMBIENT);
-        Spell.spawnParticle(caster, Particle.END_ROD, 10, 1, 1, 1);
+        caster.setAllowFlight(true);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            caster.setAllowFlight(false);
+        }, 5 * 20L);
+        Spell.playSound(caster, Sound.BLOCK_BEACON_POWER_SELECT);
+        Spell.spawnParticle(caster, Particle.END_ROD, 30, 1, 1, 1);
         return true;
     }
 
     @Override
     public Material getItemMaterial() {
-        return Material.FEATHER;
+        return Material.AMETHYST_SHARD;
     }
 
     @Override
     public String getItemDisplayName() {
-        return "&eLevitate";
+        return "&eFly";
     }
 
     @Override
     public List<String> getItemLore() {
-        return Arrays.asList("&7Levitates you for 5 seconds");
+        return Arrays.asList("&7Lets you fly for 5 seconds");
     }
 
 }

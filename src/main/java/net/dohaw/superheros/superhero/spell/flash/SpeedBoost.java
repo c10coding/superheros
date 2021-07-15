@@ -1,4 +1,4 @@
-package net.dohaw.superheros.superhero.spell.thanos;
+package net.dohaw.superheros.superhero.spell.flash;
 
 import net.dohaw.superheros.SuperherosPlugin;
 import net.dohaw.superheros.superhero.SuperheroType;
@@ -15,17 +15,17 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Arrays;
 import java.util.List;
 
-public class Levitate extends SpellWrapper {
+public class SpeedBoost extends SpellWrapper {
 
-    public Levitate() {
-        super(SpellType.LEVITATE, SuperheroType.THANOS);
+    public SpeedBoost() {
+        super(SpellType.SPEED_BOOST, SuperheroType.FLASH);
     }
 
     @Override
     public boolean cast(Player caster, SuperherosPlugin plugin) {
-        caster.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 5 * 20, 0));
-        Spell.playSound(caster, Sound.ENTITY_CHICKEN_AMBIENT);
-        Spell.spawnParticle(caster, Particle.END_ROD, 10, 1, 1, 1);
+        Spell.playSound(caster, Sound.ENTITY_GENERIC_EXPLODE);
+        Spell.spawnParticle(caster, Particle.FLASH, 30, 1, 1, 1);
+        caster.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10 * 20, 0));
         return true;
     }
 
@@ -36,12 +36,12 @@ public class Levitate extends SpellWrapper {
 
     @Override
     public String getItemDisplayName() {
-        return "&eLevitate";
+        return "&7Speed Boost";
     }
 
     @Override
     public List<String> getItemLore() {
-        return Arrays.asList("&7Levitates you for 5 seconds");
+        return Arrays.asList("&7Gives you a short speed boost for 10 seconds");
     }
 
 }

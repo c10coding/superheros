@@ -4,19 +4,20 @@ import net.dohaw.superheros.Wrapper;
 import net.dohaw.superheros.superhero.spell.SpellType;
 
 import java.util.HashSet;
+import java.util.List;
 
 public abstract class SuperheroWrapper extends Wrapper<SuperheroType> {
 
-    private HashSet<SpellType> spells;
+    private List<SpellType> spells;
 
     public SuperheroWrapper(SuperheroType KEY) {
         super(KEY);
         this.spells = compileSpells();
     }
 
-    protected abstract HashSet<SpellType> compileSpells();
+    protected abstract List<SpellType> compileSpells();
 
-    public HashSet<SpellType> getSpells() {
+    public List<SpellType> getSpells() {
         return spells;
     }
 
